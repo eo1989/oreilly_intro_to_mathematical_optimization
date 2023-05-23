@@ -14,7 +14,7 @@ epochs = 100000  # The number of iterations to perform gradient descent
 
 x = random.randint(-15, 15)  # start at a random x
 
-for i in range(epochs):
+for _ in range(epochs):
     d_x = dx_f(x)  # get slope
     x = x - L * d_x  # update x by subtracting the (learning rate) * (slope)
 

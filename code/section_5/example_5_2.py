@@ -22,13 +22,13 @@ x = 0  # we will find the x for the minimum
 y = 0  # we will find the y for the minimum
 z = 0  # we will find the z for the minimum
 
-for i in range(epochs):
+for _ in range(epochs):
     d_x = dx_f(x)  # get x slope
     d_y = dy_f(y)  # get y slope
     d_z = dz_f(z)  # get z slope
     x = x - L * d_x  # update x
     y = y - L * d_y  # update y
     z = z - L * d_z  # update z
-	
+
 # -9.999999999995559 2.9999999999988898 0.9999999999997224 2.1031154992708616e-23
 print(x, y, z, f(x,y,z))

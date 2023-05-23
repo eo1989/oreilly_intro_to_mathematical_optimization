@@ -7,6 +7,7 @@ Adapted by Thomas Nield
 Adapted code from: https://pythonhosted.org/PuLP/CaseStudies/a_sudoku_problem.html
 """
 
+
 # Import PuLP modeler functions
 from pulp import *
 
@@ -80,27 +81,22 @@ prob.solve()
 # The status of the solution is printed to the screen
 print("Status:", LpStatus[prob.status])
 
-# A file called sudokuout.txt is created/overwritten for writing to
-sudokuout = open('sudokuout.txt','w')
+with open('sudokuout.txt','w') as sudokuout:
+    # The solution is written to the sudokuout.txt file
+    for r in Rows:
+        if r in ["1", "4", "7"]:
+            sudokuout.write("+-------+-------+-------+\n")
+        for c in Cols:
+            for v in Vals:
+                if value(choices[v][r][c]) == 1:
 
-# The solution is written to the sudokuout.txt file
-for r in Rows:
-    if r == "1" or r == "4" or r == "7":
-        sudokuout.write("+-------+-------+-------+\n")
-    for c in Cols:
-        for v in Vals:
-            if value(choices[v][r][c]) == 1:
+                    if c in ["1", "4", "7"]:
+                        sudokuout.write("| ")
 
-                if c == "1" or c == "4" or c == "7":
-                    sudokuout.write("| ")
+                    sudokuout.write(f"{v} ")
 
-                sudokuout.write(v + " ")
-
-                if c == "9":
-                    sudokuout.write("|\n")
-sudokuout.write("+-------+-------+-------+")
-sudokuout.close()
-
-
+                    if c == "9":
+                        sudokuout.write("|\n")
+    sudokuout.write("+-------+-------+-------+")
 # The location of the solution is give to the user
 print("Solution Written to sudokuout.txt")

@@ -21,11 +21,11 @@ def distance_between(point1, point2):
 
 k = 4
 points = [(Point(row.x, row.y)) for index, row in pd.read_csv("https://tinyurl.com/y25lvxug").iterrows()]
-centroids = [Point(0, 0) for i in range(k)]
+centroids = [Point(0, 0) for _ in range(k)]
 
 best_loss = 1_000_000_000.0
 
-for i in range(100_000):
+for _ in range(100_000):
     random_centroid = random.choice(centroids)
 
     random_x_adjust = np.random.standard_normal()
@@ -37,7 +37,7 @@ for i in range(100_000):
     new_loss = 0.0
 
     for p in points:
-        new_loss += min([distance_between(p, c) for c in centroids])**2
+        new_loss += min(distance_between(p, c) for c in centroids)**2
 
     if new_loss < best_loss:
         best_loss = new_loss
@@ -49,5 +49,7 @@ for c in centroids:
     print("CENTROID: {0}".format(c))
 
     for p in points:
-        if distance_between(p,c) == min([distance_between(p, c2) for c2 in centroids]):
+        if distance_between(p, c) == min(
+            distance_between(p, c2) for c2 in centroids
+        ):
             print("    {0}".format(p))

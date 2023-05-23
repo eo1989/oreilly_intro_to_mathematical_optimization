@@ -27,7 +27,7 @@ n = float(len(X))  # Number of elements in X
 
 # Performing Gradient Descent
 # This will probably take a few minutes to run
-for i in range(epochs):
+for _ in range(epochs):
     Y_pred = a * X**2 + b  # The current predicted value of Y
     D_a = (-2 / n) * sum(X * (Y - Y_pred))  # d/da derivative of loss function
     D_b = (-2 / n) * sum(Y - Y_pred)  # d/db derivative of loss function
