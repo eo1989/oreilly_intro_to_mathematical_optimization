@@ -9,6 +9,7 @@ The slopes with respect to `m` and `b` against the loss function
 
 Replace the ?'s and execute the script.
 """
+
 import pandas as pd
 
 # Import points from CSV
@@ -27,8 +28,7 @@ iterations = 100_000
 n = float(len(points))  # Number of elements in X
 
 # Perform Gradient Descent
-for i in range(iterations):
-
+for _ in range(iterations):
     # slope with respect to m
     D_m = sum(2 * p.x * ((m * p.x + b) - p.y) for p in points)
 

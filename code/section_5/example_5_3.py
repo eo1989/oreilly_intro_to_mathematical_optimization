@@ -16,7 +16,7 @@ epochs = 1000000  # The number of iterations to perform gradient descent
 n = float(len(X))  # Number of elements in X
 
 # Performing Gradient Descent
-for i in range(epochs):
+for _ in range(epochs):
     Y_pred = m * X + b  # The current predicted value of Y
     D_m = (-2 / n) * sum(X * (Y - Y_pred))  # d/dm derivative of loss function
     D_b = (-2 / n) * sum(Y - Y_pred)  # d/dc derivative of loss function
